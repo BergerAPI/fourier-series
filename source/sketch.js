@@ -4,8 +4,14 @@ let amplitude = 75.0;
 // Currenr angle of wave
 let theta = 0.0;
 
+// Basic slider
+let mult = undefined;
+
 function setup() {
   createCanvas(800, 800);
+
+  mult = createSlider(0, 16, 1);
+  mult.position(20, 20);
 }
 
 function draw() {
@@ -34,8 +40,9 @@ function draw() {
  */
 function calcSine(theta, n) {
   let result = 0
+  let multiplier = mult.value()
 
-  for (let a = 1; a < n; a += 4) {
+  for (let a = 1; a < n; a += multiplier) {
     result += sin(theta * a) / a
   }
 
