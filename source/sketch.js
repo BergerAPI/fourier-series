@@ -10,15 +10,14 @@ let mult = undefined;
 function setup() {
   createCanvas(800, 800);
 
-  mult = createSlider(0, 16, 1);
+  mult = createSlider(1, 32, 1);
   mult.position(20, 20);
 }
 
 function draw() {
-  background(0);
+  // 42, 41, 62
+  background(42, 41, 62);
   noFill();
-  stroke(252, 238, 33);
-  strokeWeight(8);
 
   theta += 0.01;
 
@@ -26,9 +25,11 @@ function draw() {
 
   let z = theta
   for (let x = 0; x < width + 1; x++) {
-    let y = height / 2 + calcSine(theta + z, 200) * amplitude
+    let y = height / 2 + calcSine(theta + z, 1000) * amplitude
     z += TWO_PI / width
 
+    strokeWeight(15)
+    stroke(198, 81, 2);
     vertex(x, y);
   }
 
