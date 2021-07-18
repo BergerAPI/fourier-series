@@ -20,11 +20,24 @@ function draw() {
 
   let z = theta
   for (let x = 0; x < width + 1; x++) {
-    let y = height / 2 + sin(z + theta) * amplitude
+    let y = height / 2 + calcSine(theta + z, 200) * amplitude
+    z += TWO_PI / width
 
     vertex(x, y);
-    z += TWO_PI / 500
   }
 
   endShape()
+}
+
+/**
+ * Calcualting the sine function for the algorithm
+ */
+function calcSine(theta, n) {
+  let result = 0
+
+  for (let a = 1; a < n; a += 4) {
+    result += sin(theta * a) / a
+  }
+
+  return result
 }
